@@ -162,38 +162,24 @@ class _ExperienceSectionState extends State<ExperienceSection> {
         _buildTimeline(
           context,
           indexTitle: "01",
-          startWidget: timelineCard(
+          startWidget: timelineWithoutCard(context,
+              title: "Junior Software Developer",
+              subtitle: "devnet Solution Provider",
+              dateTime: "2013 - 2014",
+              alignment: CrossAxisAlignment.end),
+          endWidget: timelineCard(
             content:
-                "Develop in-house projects using Flutter, Angular, Java (Spring Boot), Oracle Database and WebLogic Server.",
+                "Develop ERP, retail systems and websites using ASP.Net and .Net.",
             indexTitle: "01",
           ),
-          endWidget: timelineWithoutCard(context,
-              title: "Senior Business Anaylst",
-              subtitle: "Myanma Apex Bank",
-              dateTime: "Jan 2021 - Current",
-              alignment: CrossAxisAlignment.start),
         ),
         _buildTimeline(
           context,
           indexTitle: "02",
-          startWidget: timelineWithoutCard(context,
-              title: "Senior Software Engineer",
-              subtitle: "Myanmar Information Technology",
-              dateTime: "Jan 2016 - Jan 2021",
-              alignment: CrossAxisAlignment.end),
-          endWidget: timelineCard(
-            content:
-                "Handle and support reliable solutions through innovative technologies for large local retail systems and ERP.\nProvide business insight, sales forecasting using Azure, Power BI and Power Apps",
-            indexTitle: "02",
-          ),
-        ),
-        _buildTimeline(
-          context,
-          indexTitle: "03",
           startWidget: timelineCard(
             content:
                 "Develop transportation management system and cheque issuing system including problem solving and customization.",
-            indexTitle: "03",
+            indexTitle: "02",
           ),
           endWidget: timelineWithoutCard(context,
               title: "Junior Software Developer",
@@ -203,16 +189,44 @@ class _ExperienceSectionState extends State<ExperienceSection> {
         ),
         _buildTimeline(
           context,
-          indexTitle: "04",
+          indexTitle: "03",
           startWidget: timelineWithoutCard(context,
-              title: "Junior Software Developer",
-              subtitle: "devnet Solution Provider",
-              dateTime: "2013 - 2014",
+              title: "Senior Software Engineer",
+              subtitle: "Myanmar Information Technology",
+              dateTime: "Jan 2016 - Jan 2021",
               alignment: CrossAxisAlignment.end),
           endWidget: timelineCard(
             content:
-                "Develop ERP, retail systems and websites using ASP.Net and .Net.",
+                "Handle and support reliable solutions through innovative technologies for large local retail systems and ERP.\nProvide business insight, sales forecasting using Azure, Power BI and Power Apps",
+            indexTitle: "03",
+          ),
+        ),
+        _buildTimeline(
+          context,
+          indexTitle: "04",
+          startWidget: timelineCard(
+            content:
+                "Develop in-house projects using Flutter, Angular, Java (Spring Boot), Oracle Database and WebLogic Server.",
             indexTitle: "04",
+          ),
+          endWidget: timelineWithoutCard(context,
+              title: "Senior Software Engineer",
+              subtitle: "Myanma Apex Bank",
+              dateTime: "Jan 2021 - Nov 2022",
+              alignment: CrossAxisAlignment.start),
+        ),
+        _buildTimeline(
+          context,
+          indexTitle: "05",
+          startWidget: timelineWithoutCard(context,
+              title: "Software Developer",
+              subtitle: "YTL PowerSeraya - Singapore",
+              dateTime: "Dec 2022 - Current",
+              alignment: CrossAxisAlignment.end),
+          endWidget: timelineCard(
+            content:
+                "Customisation for Oracle Utility software (CCNB). Support and cooperate with GENECO business users related with billing, credit control and batch processing using Java and .NET",
+            indexTitle: "05",
           ),
         ),
       ],
@@ -228,27 +242,14 @@ class _ExperienceSectionState extends State<ExperienceSection> {
               Text('Experience', style: Theme.of(context).textTheme.headline3),
         ),
         timelineWithoutCard(context,
-            title: "Senior Business Anaylst",
-            subtitle: "Myanma Apex Bank",
-            dateTime: "Jan 2021 - Current",
+            title: "Junior Software Developer",
+            subtitle: "devnet Solution Provider",
+            dateTime: "2013 - 2014",
             alignment: CrossAxisAlignment.start),
         timelineCard(
           content:
-              "Develop in-house projects using Flutter, Angular, Java (Spring Boot), Oracle Database and WebLogic Server.",
+              "Develop ERP, retail systems and websites using ASP.Net and .Net.",
           indexTitle: "01",
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        timelineWithoutCard(context,
-            title: "Senior Software Engineer",
-            subtitle: "Myanmar Information Technology",
-            dateTime: "Jan 2016 - Jan 2021",
-            alignment: CrossAxisAlignment.start),
-        timelineCard(
-          content:
-              "Handle and support reliable solutions through innovative technologies for large local retail systems and ERP.\nProvide business insight, sales forecasting using Azure, Power BI and Power Apps",
-          indexTitle: "02",
         ),
         SizedBox(
           height: 30,
@@ -261,20 +262,46 @@ class _ExperienceSectionState extends State<ExperienceSection> {
         timelineCard(
           content:
               "Develop transportation management system and cheque issuing system including problem solving and customization.",
+          indexTitle: "02",
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        timelineWithoutCard(context,
+            title: "Senior Software Engineer",
+            subtitle: "Myanmar Information Technology",
+            dateTime: "Jan 2016 - Jan 2021",
+            alignment: CrossAxisAlignment.start),
+        timelineCard(
+          content:
+              "Handle and support reliable solutions through innovative technologies for large local retail systems and ERP.\nProvide business insight, sales forecasting using Azure, Power BI and Power Apps",
           indexTitle: "03",
         ),
         SizedBox(
           height: 30,
         ),
         timelineWithoutCard(context,
-            title: "Junior Software Developer",
-            subtitle: "devnet Solution Provider",
-            dateTime: "2013 - 2014",
+            title: "Senior Software Engineer",
+            subtitle: "Myanma Apex Bank",
+            dateTime: "Jan 2021 - Nov 2022",
             alignment: CrossAxisAlignment.start),
         timelineCard(
           content:
-              "Develop ERP, retail systems and websites using ASP.Net and .Net.",
+              "Develop in-house projects using Flutter, Angular, Java (Spring Boot), Oracle Database and WebLogic Server.",
           indexTitle: "04",
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        timelineWithoutCard(context,
+            title: "Software Developer",
+            subtitle: "YTL PowerSeraya - Singapore",
+            dateTime: "Dec 2022 - Current",
+            alignment: CrossAxisAlignment.start),
+        timelineCard(
+          content:
+              "Customisation for Oracle Utility software (CCNB). Support and cooperate with GENECO business users related with billing, credit control and batch processing using Java and .NET",
+          indexTitle: "05",
         ),
       ],
     );

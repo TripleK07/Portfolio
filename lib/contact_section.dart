@@ -106,7 +106,7 @@ class _ContactSectionState extends State<ContactSection> {
             ),
             infoCard(
               index: 1,
-              title: "+959798486774",
+              title: "+65 88904036",
               icon: Icons.phone_sharp,
             ),
             SizedBox(
@@ -114,7 +114,7 @@ class _ContactSectionState extends State<ContactSection> {
             ),
             infoCard(
                 index: 2,
-                title: "Ayeyarwaddy Street, Ahlone, Yangon",
+                title: "Blk 52, Bukit Batok East Ave 5, Singapore",
                 icon: Icons.place_sharp),
           ],
         ),
@@ -141,7 +141,7 @@ class _ContactSectionState extends State<ContactSection> {
           ),
           infoCard(
             index: 1,
-            title: "+959798486774",
+            title: "+65 88904036",
             icon: Icons.phone_sharp,
           ),
           SizedBox(
@@ -149,7 +149,7 @@ class _ContactSectionState extends State<ContactSection> {
           ),
           infoCard(
               index: 2,
-              title: "Ayeyarwaddy Street, Ahlone, Yangon",
+              title: "Blk 52, Bukit Batok East Ave 5, Singapore",
               icon: Icons.place_sharp),
         ],
       ),
