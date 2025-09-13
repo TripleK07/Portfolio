@@ -149,7 +149,7 @@ class _ContactSectionState extends State<ContactSection> {
           ),
           infoCard(
               index: 2,
-              title: "Blk 52, Bukit Batok East Ave 5, Singapore",
+              title: "Blk 101 Bukit Batok Ave 6, Singapore",
               icon: Icons.place_sharp),
         ],
       ),

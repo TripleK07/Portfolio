@@ -183,11 +183,11 @@ class _EducationSectionState extends State<EducationSection>
                 Text('Education', style: Theme.of(context).textTheme.headline3),
                 _buildTimeline(
                   context,
-                  indexTitle: "01",
+                  indexTitle: "1",
                   startWidget: timelineCard(
                     content:
                         "Graduated from University of Computer Studies, Yangon (UCSY).",
-                    indexTitle: "01",
+                    indexTitle: "1",
                   ),
                   endWidget: timelineWithoutCard(context,
                       title: "Computer Science",
@@ -197,7 +197,7 @@ class _EducationSectionState extends State<EducationSection>
                 ),
                 _buildTimeline(
                   context,
-                  indexTitle: "02",
+                  indexTitle: "2",
                   startWidget: timelineWithoutCard(context,
                       title: "Computer Science",
                       subtitle: "B.C.Sc (Hons.)",
@@ -206,16 +206,16 @@ class _EducationSectionState extends State<EducationSection>
                   endWidget: timelineCard(
                     content:
                         "Graduated from University of Computer Studies, Yangon (UCSY) with great honor.",
-                    indexTitle: "02",
+                    indexTitle: "2",
                   ),
                 ),
                 _buildTimeline(
                   context,
-                  indexTitle: "03",
+                  indexTitle: "3",
                   startWidget: timelineCard(
                     content:
                         "After Graduating from University, received professional web developer certificate at devnet Solution Provider.",
-                    indexTitle: "03",
+                    indexTitle: "3",
                   ),
                   endWidget: timelineWithoutCard(context,
                       title: "Professional Web Developer",
@@ -225,7 +225,7 @@ class _EducationSectionState extends State<EducationSection>
                 ),
                 _buildTimeline(
                   context,
-                  indexTitle: "04",
+                  indexTitle: "4",
                   startWidget: timelineWithoutCard(context,
                       title: "Domain Driven Design Architecture",
                       subtitle: "ASP.NET Web Development",
@@ -234,16 +234,16 @@ class _EducationSectionState extends State<EducationSection>
                   endWidget: timelineCard(
                     content:
                         "Another Web, (Frontend & Backend) development with Domain Driven Design Architecture, certificate awarded by MCPA Yangon.",
-                    indexTitle: "04",
+                    indexTitle: "4",
                   ),
                 ),
                 _buildTimeline(
                   context,
-                  indexTitle: "05",
+                  indexTitle: "5",
                   startWidget: timelineCard(
                     content:
                         "Achieved Microsoft SQL Server Database Administration certificate at Gusto Institute.",
-                    indexTitle: "05",
+                    indexTitle: "5",
                   ),
                   endWidget: timelineWithoutCard(context,
                       title: "Database Administration",

@@ -12,8 +12,9 @@ class ServicesSection extends StatefulWidget {
 class _ServicesSectionState extends State<ServicesSection>
     with TickerProviderStateMixin {
   late AnimationController _applicationAnimationController;
-  late AnimationController _promisesAnimationController;
-  late AnimationController _cleanCodeAnimationController;
+  late AnimationController _qualityAnimationController;
+  late AnimationController _developmentAnimationController;
+  late AnimationController _supportAnimationController;
 
   @override
   void initState() {
@@ -21,9 +22,11 @@ class _ServicesSectionState extends State<ServicesSection>
     Duration _duration = Duration(milliseconds: 1000);
     _applicationAnimationController =
         new AnimationController(vsync: this, duration: _duration);
-    _promisesAnimationController =
+    _qualityAnimationController =
         new AnimationController(vsync: this, duration: _duration);
-    _cleanCodeAnimationController =
+    _developmentAnimationController =
+        new AnimationController(vsync: this, duration: _duration);
+    _supportAnimationController =
         new AnimationController(vsync: this, duration: _duration);
   }
 
@@ -35,13 +38,19 @@ class _ServicesSectionState extends State<ServicesSection>
 
     await Future.delayed(_delayDuration, () {
       if (mounted) {
-        _promisesAnimationController.forward();
+        _qualityAnimationController.forward();
       }
     });
 
     await Future.delayed(_delayDuration, () {
       if (mounted) {
-        _cleanCodeAnimationController.forward();
+        _developmentAnimationController.forward();
+      }
+    });
+
+    await Future.delayed(_delayDuration, () {
+      if (mounted) {
+        _supportAnimationController.forward();
       }
     });
   }
@@ -49,8 +58,9 @@ class _ServicesSectionState extends State<ServicesSection>
   @override
   void dispose() {
     _applicationAnimationController.dispose();
-    _promisesAnimationController.dispose();
-    _cleanCodeAnimationController.dispose();
+    _qualityAnimationController.dispose();
+    _developmentAnimationController.dispose();
+    _supportAnimationController.dispose();
     super.dispose();
   }
 
@@ -61,7 +71,20 @@ class _ServicesSectionState extends State<ServicesSection>
         builder: (context, child) {
           return Container(
             height: 250,
-            width: 345,
+            // width: 345,
+            width: () {
+              DeviceType deviceType = Responsive.getDeviceType(context);
+              switch (deviceType) {
+                case DeviceType.desktop:
+                  //return (MediaQuery.of(context).size.width - 60) * 0.23;
+                  return 250.0;
+                case DeviceType.tablet:
+                  return (MediaQuery.of(context).size.width - 20) * 0.4;
+                case DeviceType.mobile:
+                default:
+                  return MediaQuery.of(context).size.width * 0.9;
+              }
+            }(),
             margin: EdgeInsets.only(top: (100 - (100 * controller.value))),
             padding: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
@@ -106,6 +129,42 @@ class _ServicesSectionState extends State<ServicesSection>
         });
   }
 
+  Widget applicationCard() {
+    return roundedCard(
+        context,
+        Icons.desktop_windows_sharp,
+        'Application',
+        'Custom software solutions tailored to business requirements.',
+        _applicationAnimationController);
+  }
+
+  Widget qualityCard() {
+    return roundedCard(
+        context,
+        Icons.scatter_plot,
+        'Quality',
+        'Consistent delivery of high-quality, dependable applications.',
+        _qualityAnimationController);
+  }
+
+  Widget developmentCard() {
+    return roundedCard(
+        context,
+        Icons.code_sharp,
+        'Development',
+        'Efficient, maintainable code for scalable and robust software.',
+        _developmentAnimationController);
+  }
+
+  Widget supportCard() {
+    return roundedCard(
+        context,
+        Icons.supervisor_account_rounded,
+        'Support',
+        'Application maintenance, troubleshooting, and technical assistance.',
+        _supportAnimationController);
+  }
+
   Widget desktopLayout(context) {
     return VisibilityDetector(
       key: UniqueKey(),
@@ -130,28 +189,15 @@ class _ServicesSectionState extends State<ServicesSection>
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                roundedCard(
-                    context,
-                    Icons.desktop_windows_sharp,
-                    'Application',
-                    'Fresh and responsive design for all devices.',
-                    _applicationAnimationController),
+                applicationCard(),
                 SizedBox(
                   width: 20,
                 ),
-                roundedCard(
-                    context,
-                    Icons.scatter_plot,
-                    'Promises',
-                    'Reliablity, durabilty and customer satisfaction.',
-                    _promisesAnimationController),
+                qualityCard(),
                 SizedBox(width: 20),
-                roundedCard(
-                    context,
-                    Icons.code_sharp,
-                    'Clean Code',
-                    'Easier to understand, change and maintain with no complexity.',
-                    _cleanCodeAnimationController),
+                developmentCard(),
+                SizedBox(width: 20),
+                supportCard(),
               ],
             ),
           ],
@@ -160,7 +206,7 @@ class _ServicesSectionState extends State<ServicesSection>
     );
   }
 
-  Widget otherLayout(context) {
+  Widget tabletLayout(context) {
     return VisibilityDetector(
       key: UniqueKey(),
       onVisibilityChanged: (info) {
@@ -184,33 +230,72 @@ class _ServicesSectionState extends State<ServicesSection>
             SizedBox(
               height: 30,
             ),
-            roundedCard(
-              context,
-              Icons.desktop_windows_sharp,
-              'Application',
-              'Fresh and responsive design for all devices.',
-              _applicationAnimationController,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                applicationCard(),
+                SizedBox(
+                  width: 20,
+                ),
+                qualityCard(),
+              ],
             ),
             SizedBox(
               height: 30,
             ),
-            roundedCard(
-              context,
-              Icons.scatter_plot,
-              'Promises',
-              'Reliablity, durabilty and customer satisfaction.',
-              _promisesAnimationController,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                developmentCard(),
+                SizedBox(width: 20),
+                supportCard(),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget mobileLayout(context) {
+    return VisibilityDetector(
+      key: UniqueKey(),
+      onVisibilityChanged: (info) {
+        animate();
+      },
+      child: Container(
+        margin: const EdgeInsets.all(30),
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center, //s
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Services',
+              style: Theme.of(context).textTheme.headline6!.copyWith(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 4,
+                  ),
             ),
             SizedBox(
               height: 30,
             ),
-            roundedCard(
-              context,
-              Icons.code_sharp,
-              'Clean Code',
-              'Easier to understand, change and maintain with no complexity.',
-              _cleanCodeAnimationController,
+            applicationCard(),
+            SizedBox(
+              height: 30,
             ),
+            qualityCard(),
+            SizedBox(
+              height: 30,
+            ),
+            developmentCard(),
+            SizedBox(
+              height: 30,
+            ),
+            supportCard(),
           ],
         ),
       ),
@@ -224,8 +309,8 @@ class _ServicesSectionState extends State<ServicesSection>
       padding: const EdgeInsets.only(top: 30, bottom: 30),
       child: Responsive(
         desktop: desktopLayout(context),
-        tablet: otherLayout(context),
-        mobile: otherLayout(context),
+        tablet: tabletLayout(context),
+        mobile: mobileLayout(context),
       ),
     );
   }

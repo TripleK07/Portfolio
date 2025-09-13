@@ -191,7 +191,7 @@ class _HomeSectionState extends State<HomeSection>
             direction: SLIDE_Direction.TOP,
             slideValue: 20,
             widget: Text(
-              'Innovative, task-driven professional with 7+ years of experience in \nWindows, Web, Mobile development across all site of industries.\nEquipped with a record of success in consistently identifying and providing the technological needs of companies through ingenious innovation.',
+              'Innovative, task-driven professional with 10+ years of experience in \nWindows, Web, Mobile development across all site of industries.\nEquipped with a record of success in consistently identifying and providing the technological needs of companies through ingenious innovation.',
               style: const TextStyle(
                 color: Color(0xff293651),
                 fontSize: 16,

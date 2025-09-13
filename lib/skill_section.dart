@@ -14,6 +14,15 @@ class _SkillSectionState extends State<SkillSection>
     with SingleTickerProviderStateMixin {
   late AnimationController _skillAnimationController;
 
+  final List<Map<String, dynamic>> skills = [
+    {"name": ".Net Core", "percent": 80},
+    {"name": "Spring Boot", "percent": 55},
+    {"name": "Vue", "percent": 65},
+    {"name": "Flutter", "percent": 60},
+    {"name": "Angular", "percent": 50},
+    {"name": "Sql / Plsql", "percent": 75},
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -21,14 +30,12 @@ class _SkillSectionState extends State<SkillSection>
     Duration _duration = Duration(milliseconds: 1500);
     _skillAnimationController =
         new AnimationController(vsync: this, duration: _duration);
-
     // _animation = new Tween(begin: 0, end: 1).animate(_skillAnimationController);
   }
 
   @override
   void dispose() {
     super.dispose();
-
     //_skillAnimationController.dispose();
   }
 
@@ -158,12 +165,12 @@ class _SkillSectionState extends State<SkillSection>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        expertItem(context, 'Database Management'),
-        expertItem(context, 'Azure Cloud'),
-        expertItem(context, 'Power BI'),
-        expertItem(context, 'Data Centralization'),
-        expertItem(context, 'Data Migration'),
+        expertItem(context, 'Fullstack Development'),
+        expertItem(context, 'RESTful API'),
+        expertItem(context, 'MSSQL & Oracle DB'),
+        expertItem(context, 'Data Migration & ETL'),
         expertItem(context, 'Replication & Mirroring'),
+        expertItem(context, 'Azure Cloud'),
       ],
     );
   }
@@ -173,12 +180,12 @@ class _SkillSectionState extends State<SkillSection>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        expertItem(context, 'App Development'),
-        expertItem(context, 'Mobile Development'),
-        expertItem(context, 'Web Development'),
-        expertItem(context, 'ERP & Retails'),
-        expertItem(context, 'Photoshop'),
-        expertItem(context, 'Graphic Design'),
+        expertItem(context, 'Git'),
+        expertItem(context, 'Power BI'),
+        expertItem(context, 'Containerization'),
+        expertItem(context, '3rd-party Integration'),
+        expertItem(context, 'Software Lifecycle'),
+        expertItem(context, 'Problem Solving'),
       ],
     );
   }
@@ -231,11 +238,10 @@ class _SkillSectionState extends State<SkillSection>
               SizedBox(
                 height: 30,
               ),
-              skillPercent(context, "ASP.NET & C#", 80),
-              skillPercent(context, "Flutter", 80),
-              skillPercent(context, "Java", 65),
-              skillPercent(context, "Angular", 60),
-              skillPercent(context, "SQL", 70),
+              ...skills
+                  .map((skill) =>
+                      skillPercent(context, skill["name"], skill["percent"]))
+                  .toList(),
             ],
           ),
           SizedBox(
@@ -264,11 +270,10 @@ class _SkillSectionState extends State<SkillSection>
           SizedBox(
             height: 30,
           ),
-          skillPercent(context, "C#", 80),
-          skillPercent(context, "Flutter", 80),
-          skillPercent(context, "Java", 65),
-          skillPercent(context, "Angular", 60),
-          skillPercent(context, "SQL", 70),
+          ...skills
+              .map((skill) =>
+                  skillPercent(context, skill["name"], skill["percent"]))
+              .toList(),
           SizedBox(
             height: 30,
           ),
@@ -315,11 +320,10 @@ class _SkillSectionState extends State<SkillSection>
           SizedBox(
             height: 30,
           ),
-          skillPercentMobile(context, "C#", 80),
-          skillPercentMobile(context, "Flutter", 80),
-          skillPercentMobile(context, "Java", 65),
-          skillPercentMobile(context, "Angular", 60),
-          skillPercentMobile(context, "SQL", 70),
+          ...skills
+              .map((skill) =>
+                  skillPercent(context, skill["name"], skill["percent"]))
+              .toList(),
           SizedBox(
             height: 30,
           ),
