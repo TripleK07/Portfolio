@@ -5,11 +5,12 @@ import 'package:portfolio/contact_section.dart';
 import 'package:portfolio/education_section.dart';
 import 'package:portfolio/experience_section.dart';
 import 'package:portfolio/footer_section.dart';
-import 'package:portfolio/responsive.dart';
+import 'package:portfolio/project_section.dart';
+import 'package:portfolio/widgets/responsive.dart';
 import 'package:portfolio/services_section.dart';
 import 'package:portfolio/skill_section.dart';
 import 'package:portfolio/home_section.dart';
-import 'package:portfolio/navbar.dart';
+import 'package:portfolio/widgets/navbar.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -71,21 +72,21 @@ class _MyHomePageState extends State<MyHomePage> {
         itemPositionsListener: _itemPositionListener,
         itemCount: 6,
         itemBuilder: (_, i) {
-          if (i == 0) return HomeSection();
+          if (i == 0) return const HomeSection();
           if (i == 1)
             return Container(
               width: double.infinity,
               child: Column(
                 children: [
-                  SkillSection(),
-                  ServicesSection(),
+                  const SkillSection(),
+                  const ServicesSection(),
                 ],
               ),
             );
-          if (i == 2) return EducationSection();
-          if (i == 3) return ExperienceSection();
-          if (i == 4) return ContactSection();
-          if (i == 5) return FooterSection();
+          if (i == 2) return const EducationSection();
+          if (i == 3) return const ExperienceSection();
+          if (i == 4) return const ProjectSection();
+          if (i == 5) return const FooterSection();
           return Container();
         },
       ),

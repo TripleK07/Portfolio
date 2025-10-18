@@ -84,15 +84,7 @@ class _FooterSectionState extends State<FooterSection> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              socialLink(FontAwesomeIcons.facebookF, kFacebookLink, 0),
-              SizedBox(
-                width: 30,
-              ),
-              socialLink(FontAwesomeIcons.instagram, kInstergramLink, 1),
-              SizedBox(
-                width: 30,
-              ),
-              socialLink(FontAwesomeIcons.twitter, kTwitterLink, 2),
+              socialLink(FontAwesomeIcons.github, kGithubLink, 0),
               SizedBox(
                 width: 30,
               ),

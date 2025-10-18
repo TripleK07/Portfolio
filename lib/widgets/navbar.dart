@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Providers/item_scroll_provider.dart';
-import 'package:portfolio/responsive.dart';
+import 'package:portfolio/widgets/responsive.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
@@ -54,7 +54,7 @@ class _NavBarState extends State<NavBar> {
           _vSpacer(),
           menuItem(index: 3, text: 'Experience'),
           _vSpacer(),
-          menuItem(index: 4, text: 'Contact'),
+          menuItem(index: 4, text: 'Projects'),
         ],
       ),
     );
@@ -117,7 +117,7 @@ class _NavBarState extends State<NavBar> {
           _hSpacer(),
           menuItem(index: 3, text: 'Experience'),
           _hSpacer(),
-          menuItem(index: 4, text: 'Contact'),
+          menuItem(index: 4, text: 'Projects'),
         ],
       ),
     );

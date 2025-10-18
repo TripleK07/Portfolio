@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio/responsive.dart';
+import 'package:portfolio/widgets/responsive.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class SkillSection extends StatefulWidget {
@@ -15,12 +15,14 @@ class _SkillSectionState extends State<SkillSection>
   late AnimationController _skillAnimationController;
 
   final List<Map<String, dynamic>> skills = [
-    {"name": ".Net Core", "percent": 80},
-    {"name": "Spring Boot", "percent": 55},
+    {"name": "C#, .Net Core", "percent": 80},
+    {"name": "Java, Spring Boot", "percent": 50},
+    {"name": "SQL, PL/SQL", "percent": 75},
+    {"name": "REST, SOAP", "percent": 85},
     {"name": "Vue", "percent": 65},
-    {"name": "Flutter", "percent": 60},
-    {"name": "Angular", "percent": 50},
-    {"name": "Sql / Plsql", "percent": 75},
+    {"name": "Flutter, Angular", "percent": 60},
+    {"name": "HTML, CSS, JS", "percent": 70},
+    {"name": "Git, TFS", "percent": 90},
   ];
 
   @override
@@ -166,11 +168,12 @@ class _SkillSectionState extends State<SkillSection>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         expertItem(context, 'Fullstack Development'),
-        expertItem(context, 'RESTful API'),
+        // expertItem(context, 'RESTful API'),
         expertItem(context, 'MSSQL & Oracle DB'),
         expertItem(context, 'Data Migration & ETL'),
         expertItem(context, 'Replication & Mirroring'),
         expertItem(context, 'Azure Cloud'),
+        expertItem(context, 'OOP, DBMS'),
       ],
     );
   }
@@ -180,7 +183,8 @@ class _SkillSectionState extends State<SkillSection>
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        expertItem(context, 'Git'),
+        // expertItem(context, 'Git'),
+        expertItem(context, 'Firebase'),
         expertItem(context, 'Power BI'),
         expertItem(context, 'Containerization'),
         expertItem(context, '3rd-party Integration'),
@@ -220,6 +224,7 @@ class _SkillSectionState extends State<SkillSection>
   }
 
   Widget desktopLayout(context) {
+    debugPrint("rebuild : skill desktop");
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -257,6 +262,7 @@ class _SkillSectionState extends State<SkillSection>
   }
 
   Widget tabletLayout(context) {
+    debugPrint("rebuild : skill tablet");
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center, //s
@@ -322,7 +328,7 @@ class _SkillSectionState extends State<SkillSection>
           ),
           ...skills
               .map((skill) =>
-                  skillPercent(context, skill["name"], skill["percent"]))
+                  skillPercentMobile(context, skill["name"], skill["percent"]))
               .toList(),
           SizedBox(
             height: 30,

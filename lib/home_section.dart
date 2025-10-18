@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/AnimationHelper/fade_slide_animated_widget.dart';
 import 'package:portfolio/constant.dart';
-import 'package:portfolio/responsive.dart';
+import 'package:portfolio/widgets/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
@@ -177,7 +177,7 @@ class _HomeSectionState extends State<HomeSection>
               direction: SLIDE_Direction.TOP,
               slideValue: 20,
               widget: const Text(
-                'Professional Software Engineer',
+                'Software Engineer',
                 style: const TextStyle(
                   color: Color(0xff293651),
                   fontSize: 18,
@@ -190,13 +190,16 @@ class _HomeSectionState extends State<HomeSection>
             controller: _introTextController,
             direction: SLIDE_Direction.TOP,
             slideValue: 20,
-            widget: Text(
-              'Innovative, task-driven professional with 10+ years of experience in \nWindows, Web, Mobile development across all site of industries.\nEquipped with a record of success in consistently identifying and providing the technological needs of companies through ingenious innovation.',
-              style: const TextStyle(
-                color: Color(0xff293651),
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                height: 1.7,
+            widget: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text(
+                'Innovative and results-oriented software developer with extensive experience in Windows, web, and mobile development across diverse industries. Proven track record of understanding business needs and delivering effective technology solutions through creative innovation.',
+                style: const TextStyle(
+                  color: Color(0xff293651),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  height: 1.7,
+                ),
               ),
             ),
           ),
@@ -214,7 +217,7 @@ class _HomeSectionState extends State<HomeSection>
                   width: 10,
                 ),
                 button(
-                  'Download CV',
+                  'Download Resume',
                   () {
                     // downloadFile(
                     //     'https://triplek07.github.io/assets/assets/static/ResumeOfKKK.docx');
@@ -340,15 +343,7 @@ class _HomeSectionState extends State<HomeSection>
         ),
         child: Column(
           children: [
-            socialLink(FontAwesomeIcons.facebookF, kFacebookLink),
-            SizedBox(
-              height: 40,
-            ),
-            socialLink(FontAwesomeIcons.instagram, kInstergramLink),
-            SizedBox(
-              height: 40,
-            ),
-            socialLink(FontAwesomeIcons.twitter, kTwitterLink),
+            socialLink(FontAwesomeIcons.github, kGithubLink),
             SizedBox(
               height: 40,
             ),

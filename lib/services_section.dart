@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/responsive.dart';
+import 'package:portfolio/widgets/responsive.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class ServicesSection extends StatefulWidget {
@@ -118,8 +118,8 @@ class _ServicesSectionState extends State<ServicesSection>
                   subtitle,
                   style: TextStyle(
                     color: Color(0xff293651),
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
                   ),
                   textAlign: TextAlign.center,
                 ),

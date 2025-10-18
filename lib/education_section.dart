@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/icon_indicator.dart';
-import 'package:portfolio/responsive.dart';
-import 'package:timeline_tile/timeline_tile.dart';
+import 'package:portfolio/widgets/responsive.dart';
+import 'package:portfolio/widgets/timeline.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class EducationSection extends StatefulWidget {
@@ -15,8 +14,6 @@ class _EducationSectionState extends State<EducationSection>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
-  String _hoverIndex = "";
-
   @override
   void initState() {
     super.initState();
@@ -25,145 +22,7 @@ class _EducationSectionState extends State<EducationSection>
         vsync: this, duration: Duration(milliseconds: 1500));
   }
 
-  Widget _buildTimeline(
-    context, {
-    required String indexTitle,
-    required Widget startWidget,
-    required Widget endWidget,
-  }) {
-    Color fillColor = _hoverIndex == indexTitle
-        ? Theme.of(context).primaryColor
-        : Colors.white;
-    Color textColor = _hoverIndex == indexTitle
-        ? Colors.white
-        : Theme.of(context).primaryColor;
-
-    return MouseRegion(
-      onEnter: (event) {
-        setState(() {
-          _hoverIndex = indexTitle;
-        });
-      },
-      onExit: (event) {
-        setState(() {
-          _hoverIndex = "";
-        });
-      },
-      child: Container(
-        height: 220,
-        width: 900,
-        child: TimelineTile(
-          axis: TimelineAxis.vertical,
-          alignment: TimelineAlign.center,
-          indicatorStyle: IndicatorStyle(
-            color: Theme.of(context).primaryColor,
-            indicator: IconIndicator(
-              title: indexTitle,
-              size: 20,
-              fillColor: fillColor,
-              textColor: textColor,
-            ),
-            height: 60,
-            width: 60,
-          ),
-          beforeLineStyle:
-              LineStyle(color: Theme.of(context).primaryColor, thickness: 2),
-          startChild: Container(
-            color: Colors.transparent,
-            child: startWidget,
-          ),
-          endChild: Container(
-            constraints: const BoxConstraints(
-              minWidth: 200,
-            ),
-            color: Colors.transparent,
-            child: endWidget,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget timelineCard({
-    required String indexTitle,
-    required String content,
-  }) {
-    Color fillColor = _hoverIndex == indexTitle
-        ? Theme.of(context).primaryColor
-        : Colors.white;
-    Color textColor =
-        _hoverIndex == indexTitle ? Colors.white : Colors.grey.shade600;
-
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30),
-      padding: const EdgeInsets.all(20),
-      child: Text(
-        content,
-        style: Theme.of(context).textTheme.headline6!.copyWith(
-              color: textColor,
-            ),
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: fillColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget timelineWithoutCard(context,
-      {required String title,
-      required String subtitle,
-      required String dateTime,
-      required CrossAxisAlignment alignment}) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-      child: Column(
-        crossAxisAlignment: alignment,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: Theme.of(context)
-                .textTheme
-                .headline3!
-                .copyWith(color: Colors.black.withOpacity(0.7)),
-            textAlign: (alignment == CrossAxisAlignment.end)
-                ? TextAlign.end
-                : TextAlign.start,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(
-            subtitle,
-            style: Theme.of(context).textTheme.headline6,
-            textAlign: (alignment == CrossAxisAlignment.end)
-                ? TextAlign.end
-                : TextAlign.start,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Text(dateTime,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6!
-                  .copyWith(color: Colors.grey.shade600)),
-          SizedBox(
-            height: 10,
-          ),
-        ],
-      ),
-    );
-  }
+  String _hoverIndex = "";
 
   Widget desktopLayout() {
     return VisibilityDetector(
@@ -181,75 +40,125 @@ class _EducationSectionState extends State<EducationSection>
             child: Column(
               children: [
                 Text('Education', style: Theme.of(context).textTheme.headline3),
-                _buildTimeline(
-                  context,
-                  indexTitle: "1",
-                  startWidget: timelineCard(
-                    content:
-                        "Graduated from University of Computer Studies, Yangon (UCSY).",
-                    indexTitle: "1",
-                  ),
-                  endWidget: timelineWithoutCard(context,
-                      title: "Computer Science",
-                      subtitle: "B.C.Sc",
-                      dateTime: "4th May 2013",
-                      alignment: CrossAxisAlignment.start),
-                ),
-                _buildTimeline(
-                  context,
+                // BuildTimeline(
+                //   indexTitle: "1",
+                //   hoverIndex: _hoverIndex,
+                //   onHoverChanged: (value) {
+                //     setState(() {
+                //       _hoverIndex = value;
+                //     });
+                //   },
+                //   startWidget: TimelineCard(
+                //     indexTitle: "1",
+                //     content:
+                //         "Graduated from University of Computer Studies, Yangon (UCSY).",
+                //     hoverIndex: _hoverIndex,
+                //   ),
+                //   endWidget: TimelineWithoutCard(
+                //       title: "Computer Science",
+                //       subtitle: "B.C.Sc",
+                //       dateTime: "4th May 2013",
+                //       alignment: CrossAxisAlignment.start),
+                // ),
+                BuildTimeline(
                   indexTitle: "2",
-                  startWidget: timelineWithoutCard(context,
+                  hoverIndex: _hoverIndex,
+                  onHoverChanged: (value) {
+                    setState(() {
+                      _hoverIndex = value;
+                    });
+                  },
+                  startWidget: TimelineWithoutCard(
                       title: "Computer Science",
-                      subtitle: "B.C.Sc (Hons.)",
-                      dateTime: "8th Feb 2014",
+                      subtitle: "Bachelor of Computer Science (Hons.)",
+                      dateTime: "Feb 2014",
                       alignment: CrossAxisAlignment.end),
-                  endWidget: timelineCard(
+                  endWidget: TimelineCard(
+                    indexTitle: "2",
                     content:
                         "Graduated from University of Computer Studies, Yangon (UCSY) with great honor.",
-                    indexTitle: "2",
+                    hoverIndex: _hoverIndex,
                   ),
                 ),
-                _buildTimeline(
-                  context,
-                  indexTitle: "3",
-                  startWidget: timelineCard(
-                    content:
-                        "After Graduating from University, received professional web developer certificate at devnet Solution Provider.",
-                    indexTitle: "3",
-                  ),
-                  endWidget: timelineWithoutCard(context,
-                      title: "Professional Web Developer",
-                      subtitle: "ASP.NET Web Development",
-                      dateTime: "Jan 2014",
-                      alignment: CrossAxisAlignment.start),
-                ),
-                _buildTimeline(
-                  context,
-                  indexTitle: "4",
-                  startWidget: timelineWithoutCard(context,
-                      title: "Domain Driven Design Architecture",
-                      subtitle: "ASP.NET Web Development",
-                      dateTime: "July 2016",
-                      alignment: CrossAxisAlignment.end),
-                  endWidget: timelineCard(
-                    content:
-                        "Another Web, (Frontend & Backend) development with Domain Driven Design Architecture, certificate awarded by MCPA Yangon.",
-                    indexTitle: "4",
-                  ),
-                ),
-                _buildTimeline(
-                  context,
+                // BuildTimeline(
+                //   indexTitle: "3",
+                //   hoverIndex: _hoverIndex,
+                //   onHoverChanged: (value) {
+                //     setState(() {
+                //       _hoverIndex = value;
+                //     });
+                //   },
+                //   startWidget: TimelineCard(
+                //     indexTitle: "3",
+                //     content:
+                //         "After Graduating from University, received professional web developer certificate at devnet Solution Provider.",
+                //     hoverIndex: _hoverIndex,
+                //   ),
+                //   endWidget: TimelineWithoutCard(
+                //       title: "Professional Web Developer",
+                //       subtitle: "ASP.NET Web Development",
+                //       dateTime: "Jan 2014",
+                //       alignment: CrossAxisAlignment.start),
+                // ),
+                // BuildTimeline(
+                //   indexTitle: "4",
+                //   hoverIndex: _hoverIndex,
+                //   onHoverChanged: (value) {
+                //     setState(() {
+                //       _hoverIndex = value;
+                //     });
+                //   },
+                //   startWidget: TimelineWithoutCard(
+                //       title: "Domain Driven Design Architecture",
+                //       subtitle: "ASP.NET Web Development",
+                //       dateTime: "July 2016",
+                //       alignment: CrossAxisAlignment.end),
+                //   endWidget: TimelineCard(
+                //     indexTitle: "4",
+                //     content:
+                //         "Another Web, (Frontend & Backend) development with Domain Driven Design Architecture, certificate awarded by MCPA Yangon.",
+                //     hoverIndex: _hoverIndex,
+                //   ),
+                // ),
+                BuildTimeline(
                   indexTitle: "5",
-                  startWidget: timelineCard(
+                  hoverIndex: _hoverIndex,
+                  onHoverChanged: (value) {
+                    setState(() {
+                      _hoverIndex = value;
+                    });
+                  },
+                  startWidget: TimelineCard(
+                    indexTitle: "5",
                     content:
                         "Achieved Microsoft SQL Server Database Administration certificate at Gusto Institute.",
-                    indexTitle: "5",
+                    hoverIndex: _hoverIndex,
                   ),
-                  endWidget: timelineWithoutCard(context,
+                  endWidget: TimelineWithoutCard(
                       title: "Database Administration",
                       subtitle: "Microsoft SQL Server",
                       dateTime: "August 2019",
                       alignment: CrossAxisAlignment.start),
+                ),
+                BuildTimeline(
+                  indexTitle: "6",
+                  hoverIndex: _hoverIndex,
+                  onHoverChanged: (value) {
+                    setState(() {
+                      _hoverIndex = value;
+                    });
+                  },
+                  startWidget: TimelineWithoutCard(
+                      title: "Azure Developer Associate",
+                      subtitle: "Microsoft",
+                      dateTime: "March 2024",
+                      alignment: CrossAxisAlignment.end),
+                  endWidget: TimelineCard(
+                    indexTitle: "6",
+                    content:
+                        "Achieved Microsoft Certified Azure Developer Associate AZ-204.",
+                    hoverIndex: _hoverIndex,
+                  ),
                 ),
               ],
             ),
@@ -267,67 +176,86 @@ class _EducationSectionState extends State<EducationSection>
           child:
               Text('Education', style: Theme.of(context).textTheme.headline3),
         ),
-        timelineWithoutCard(context,
+        // TimelineWithoutCard(
+        //     title: "Computer Science",
+        //     subtitle: "B.C.Sc",
+        //     dateTime: "4th May 2013",
+        //     alignment: CrossAxisAlignment.start),
+        // TimelineCard(
+        //   indexTitle: "1",
+        //   content:
+        //       "Graduated from University of Computer Studies, Yangon (UCSY)",
+        //   hoverIndex: "0",
+        // ),
+        // const SizedBox(
+        //   height: 30,
+        // ),
+        TimelineWithoutCard(
             title: "Computer Science",
-            subtitle: "B.C.Sc",
-            dateTime: "4th May 2013",
-            alignment: CrossAxisAlignment.start),
-        timelineCard(
-          content:
-              "Graduated from University of Computer Studies, Yangon (UCSY)",
-          indexTitle: "01",
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        timelineWithoutCard(context,
-            title: "Computer Science",
-            subtitle: "B.C.Sc (Hons.)",
+            subtitle: "Bachelor of Computer Science (Hons.)",
             dateTime: "8th Feb 2014",
             alignment: CrossAxisAlignment.start),
-        timelineCard(
+        TimelineCard(
+          indexTitle: "2",
           content:
               "Graduated from University of Computer Studies, Yangon (UCSY) with great honor",
-          indexTitle: "02",
+          hoverIndex: "0",
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
-        timelineWithoutCard(context,
-            title: "Professional Web Developer",
-            subtitle: "ASP.NET Web Development",
-            dateTime: "Jan 2014",
-            alignment: CrossAxisAlignment.start),
-        timelineCard(
-          content:
-              "After Graduating from University, received professional web developer certificate at devnet Solution Provider.",
-          indexTitle: "03",
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        timelineWithoutCard(context,
-            title: "Domain Driven Design Architecture",
-            subtitle: "ASP.NET Web Development",
-            dateTime: "July 2016",
-            alignment: CrossAxisAlignment.start),
-        timelineCard(
-          content:
-              "Another Web, (Frontend & Backend) development with Domain Driven Design Architecture, certificate awarded by MCPA Yangon",
-          indexTitle: "04",
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        timelineWithoutCard(context,
+        // TimelineWithoutCard(
+        //     title: "Professional Web Developer",
+        //     subtitle: "ASP.NET Web Development",
+        //     dateTime: "Jan 2014",
+        //     alignment: CrossAxisAlignment.start),
+        // TimelineCard(
+        //   indexTitle: "3",
+        //   content:
+        //       "After Graduating from University, received professional web developer certificate at devnet Solution Provider.",
+        //   hoverIndex: "0",
+        // ),
+        // const SizedBox(
+        //   height: 30,
+        // ),
+        // TimelineWithoutCard(
+        //     title: "Domain Driven Design Architecture",
+        //     subtitle: "ASP.NET Web Development",
+        //     dateTime: "July 2016",
+        //     alignment: CrossAxisAlignment.start),
+        // TimelineCard(
+        //   indexTitle: "4",
+        //   content:
+        //       "Another Web, (Frontend & Backend) development with Domain Driven Design Architecture, certificate awarded by MCPA Yangon",
+        //   hoverIndex: "0",
+        // ),
+        // const SizedBox(
+        //   height: 30,
+        // ),
+        TimelineWithoutCard(
             title: "Database Administration",
             subtitle: "Microsoft SQL Server",
             dateTime: "August 2019",
             alignment: CrossAxisAlignment.start),
-        timelineCard(
+        TimelineCard(
+          indexTitle: "5",
           content:
               "Achieved Microsoft SQL Server Database Administration certificate at Gusto Institute.",
-          indexTitle: "05",
+          hoverIndex: "0",
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        TimelineWithoutCard(
+            title: "Azure Developer Associate",
+            subtitle: "Microsoft",
+            dateTime: "March 2024",
+            alignment: CrossAxisAlignment.start),
+        TimelineCard(
+          indexTitle: "6",
+          content:
+              "Achieved Microsoft Certified Azure Developer Associate AZ-204.",
+          hoverIndex: "0",
         ),
       ],
     );
