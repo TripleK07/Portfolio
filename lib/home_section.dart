@@ -219,10 +219,7 @@ class _HomeSectionState extends State<HomeSection>
                 button(
                   'Download Resume',
                   () {
-                    // downloadFile(
-                    //     'https://triplek07.github.io/assets/assets/static/ResumeOfKKK.docx');
-                    downloadFile(
-                        "https://triplek07.github.io/assets/assets/static/Khant%20Ko%20Ko's%20Resume.pdf");
+                    downloadFile("/KhantKoKo_Resume.pdf");
                   },
                 ),
               ],
